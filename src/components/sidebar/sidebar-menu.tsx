@@ -1,7 +1,7 @@
 'use client'
 
 import type { DashboardMenu, DashboardMenuItem } from "@/config/dashboard-menu"
-import { Fragment } from "react"
+import { Fragment, useCallback } from "react"
 import Icons from "../icons"
 import {
    Collapsible,
@@ -22,12 +22,14 @@ import { memo } from "react"
 import { cn } from "@/lib/utils"
 import { ChevronRight } from "lucide-react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
  
 export function SidebarMenus({
    dashboardMenu
 } : {
    dashboardMenu: DashboardMenu[]
 } ) {
+
    return (
       <>
          {dashboardMenu.map(menu => (
@@ -66,10 +68,20 @@ const Menu = memo(({
    menuItem: DashboardMenuItem;
    className ?: string;
 }) => {
+
+   const pathname = usePathname()
+
+   const activeLink = useCallback((link: string, pathname: string) => {
+      return link === "/dashboard" && pathname !== "/dashboard"
+        ? false
+        : link.startsWith(pathname);
+    }, [pathname])
+
    return (
       <>
-      <SidebarMenuItem key={menuItem.label}>
+      <SidebarMenuItem key={menuItem.label} {...props}>
          <SidebarMenuButton 
+            isActive={activeLink(menuItem.link, pathname)}
             asChild>
             <Link 
                className="w-full"
@@ -91,6 +103,15 @@ const Menu = memo(({
    menuItem: DashboardMenuItem;
    className ?: string;
 }) => {
+
+   const pathname = usePathname()
+
+   const activeLink = useCallback((link: string, pathname: string) => {
+      return link === "/dashboard" && pathname !== "/dashboard"
+        ? false
+        : link.startsWith(pathname);
+    }, [pathname])
+
    return (
       <>
       <Collapsible
@@ -100,7 +121,9 @@ const Menu = memo(({
          >
          <SidebarMenuItem>
          <CollapsibleTrigger asChild>
-            <SidebarMenuButton tooltip={menuItem.label}>
+            <SidebarMenuButton 
+               isActive={activeLink(menuItem.link, pathname)}
+               tooltip={menuItem.label}>
                {menuItem.icon && <Icons iconName={menuItem.icon} />}
                <span>{menuItem.label}</span>
                <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />

@@ -30,7 +30,7 @@ export const dashboardMenu : DashboardMenu[] = [
             subItems: null
          },
          {
-            link: '/dashboard',
+            link: '/setting',
             label: 'Settings',
             icon: 'settings',
             newTab: false,
