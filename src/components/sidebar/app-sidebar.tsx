@@ -25,6 +25,8 @@ import {
 } from "@/components/ui/sidebar"
 import { SidebarMenus } from "./sidebar-menu"
 import { dashboardMenu } from "@/components/sidebar/dashboard-menu"
+import { ModeToggle } from "../mode-toggle"
+import { ThemeSwitcher } from "../theme-switcher"
 
 const data = {
   user: {
@@ -165,7 +167,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <SidebarMenus dashboardMenu={dashboardMenu} />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <ThemeSwitcher className="w-fit" />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>

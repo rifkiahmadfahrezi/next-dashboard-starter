@@ -1,10 +1,6 @@
 'use client'
 import Link from "next/link"
-import { 
-   FacebookIcon,
-   InstagramIcon,
-   TwitterIcon,
-} from "lucide-react"
+import { ThemeSwitcher } from "./theme-switcher"
 import { Separator } from "./ui/separator"
 
 const footerMenus = [
@@ -77,7 +73,10 @@ export default function Footer() {
         </div>
       </div>
       <Separator className="container mt-8 mb-4 mx-auto px-4" />
-      <div className="mt-8 md:mt-12 text-center text-gray-400 text-sm">© {new Date().getFullYear()} Company. All rights reserved.</div>
+      <div className="flex items-center justify-between container mx-auto px-3">
+         <small className="text-muted-foreground" >© {new Date().getFullYear()} Company. All rights reserved.</small>
+         <ThemeSwitcher />
+      </div>
     </footer>
   )
 }

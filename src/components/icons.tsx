@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import * as LucideIcons from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { ShieldCheck } from 'lucide-react'
@@ -26,4 +26,4 @@ const Icons = ({
   )
 }
 
-export default Icons
+export default memo(Icons)

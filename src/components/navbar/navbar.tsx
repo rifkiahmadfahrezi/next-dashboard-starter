@@ -8,7 +8,6 @@ import { Menu } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Separator } from "@/components/ui/separator"
-import { ModeToggle } from "../mode-toggle"
 
 
 const routes = [
@@ -97,7 +96,6 @@ export function Navbar() {
         </Sheet>
         <div className="flex flex-1 items-center space-x-2 justify-end">
           <div className="flex items-center gap-2">
-            <ModeToggle />
             <Button
               asChild
               >
