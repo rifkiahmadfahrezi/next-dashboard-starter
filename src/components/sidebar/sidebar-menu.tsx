@@ -1,6 +1,6 @@
 'use client'
 
-import type { DashboardMenu, DashboardMenuItem } from "@/config/dashboard-menu"
+import type { DashboardMenu, DashboardMenuItem } from "@/components/sidebar/dashboard-menu"
 import { Fragment, useCallback } from "react"
 import Icons from "../icons"
 import {
@@ -79,7 +79,7 @@ const Menu = memo(({
 
    return (
       <>
-      <SidebarMenuItem key={menuItem.label} {...props}>
+      <SidebarMenuItem {...props}>
          <SidebarMenuButton 
             isActive={activeLink(menuItem.link, pathname)}
             asChild>

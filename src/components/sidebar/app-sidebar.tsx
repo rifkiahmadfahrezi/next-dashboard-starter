@@ -24,7 +24,7 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar"
 import { SidebarMenus } from "./sidebar-menu"
-import { dashboardMenu } from "@/config/dashboard-menu"
+import { dashboardMenu } from "@/components/sidebar/dashboard-menu"
 
 const data = {
   user: {
