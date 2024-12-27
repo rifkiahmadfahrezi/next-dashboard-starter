@@ -39,7 +39,7 @@ export const DynamicBreadcrumb = ({
       return pathname.split('/').slice(1).map((item) => {
          return {
             link: `/${item}`,
-            label: item,
+            label: item.replaceAll('-', ' '),
             active: isMenuActive(pathname, `/${item}`)
          }
       })
