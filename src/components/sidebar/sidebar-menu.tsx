@@ -74,7 +74,7 @@ const Menu = memo(({
    const activeLink = useCallback((link: string, pathname: string) => {
       return link === "/dashboard" && pathname !== "/dashboard"
         ? false
-        : link.startsWith(pathname);
+        : pathname.startsWith(link);
     }, [pathname])
 
    return (
@@ -109,7 +109,7 @@ const Menu = memo(({
    const activeLink = useCallback((link: string, pathname: string) => {
       return link === "/dashboard" && pathname !== "/dashboard"
         ? false
-        : link.startsWith(pathname);
+        : pathname.startsWith(link);
     }, [pathname])
 
    return (
