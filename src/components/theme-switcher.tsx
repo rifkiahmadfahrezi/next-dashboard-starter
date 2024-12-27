@@ -33,6 +33,7 @@ export const ThemeSwitcher = ({
    <div className={cn("flex items-center gap-0.5 py-1 px-2 rounded-full border flex-wrap", className)} {...props}>
       {themes.map(item => (
          <Button
+            key={item.name}
             variant={theme === item.name ? 'secondary' : 'ghost'}
             size={'icon'}
             className={cn('rounded-full', theme === item.name && 'border' )}

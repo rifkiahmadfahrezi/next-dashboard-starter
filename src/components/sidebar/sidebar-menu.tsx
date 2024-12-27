@@ -33,7 +33,7 @@ export function SidebarMenus({
    return (
       <>
          {dashboardMenu.map(menu => (
-            <Fragment>
+            <Fragment key={menu.title}>
                <SidebarGroup>
                   <SidebarGroupLabel>{menu.title}</SidebarGroupLabel>
                   <SidebarMenu>
@@ -75,11 +75,11 @@ const Menu = memo(({
       return link === "/dashboard" && pathname !== "/dashboard"
         ? false
         : pathname.startsWith(link);
-    }, [pathname])
+    }, [])
 
    return (
       <>
-      <SidebarMenuItem {...props}>
+      <SidebarMenuItem className={cn(className)} {...props}>
          <SidebarMenuButton 
             isActive={activeLink(menuItem.link, pathname)}
             asChild>
@@ -94,6 +94,8 @@ const Menu = memo(({
       </>
    )
 })
+
+Menu.displayName = "Menu"
 
  const CollapsibleMenu = memo(({
    menuItem,
@@ -110,7 +112,7 @@ const Menu = memo(({
       return link === "/dashboard" && pathname !== "/dashboard"
         ? false
         : pathname.startsWith(link);
-    }, [pathname])
+    }, [])
 
    return (
       <>
@@ -148,3 +150,5 @@ const Menu = memo(({
       </>
    )
  })
+
+ CollapsibleMenu.displayName = "CollapsibleMenu"
