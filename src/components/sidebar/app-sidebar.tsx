@@ -23,12 +23,12 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <div className="flex items-center gap-3">
         <Link
           href={'/dashboard'}
-          className="flex items-center gap-3 w-full p-3 hover:bg-secondary rounded"
+          className="flex items-center gap-3 w-full hover:bg-secondary rounded"
           >
           <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
             <Code className="size-4" />
           </div>
-          <div className="grid flex-1 text-left text-sm leading-tight">
+          <div className="grid flex-1 text-left text-sm leading-tight p-1">
             <span className="truncate font-semibold">
               Company
             </span>
