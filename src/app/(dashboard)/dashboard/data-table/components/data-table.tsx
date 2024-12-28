@@ -1,5 +1,5 @@
 'use client'
-import React, { lazy, useState } from 'react'
+import React, { lazy, useEffect, useState } from 'react'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import {   
    flexRender,
@@ -179,6 +179,12 @@ function DataTable() {
       queryFn: () => getProducts(pagination.pageSize, pagination.pageIndex * pagination.pageSize, debouncedGlobalFilter),
       placeholderData: keepPreviousData
    })
+
+   useEffect(() => {
+    if(debouncedGlobalFilter){
+      setPagination({ pageIndex: 0, pageSize: 10 })
+    }
+   }, [debouncedGlobalFilter])
    
    const table = useReactTable({
       data: data?.products ?? [],
