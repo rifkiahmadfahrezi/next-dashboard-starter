@@ -11,8 +11,6 @@ import {
 import { Input } from "@/components/ui/input"
 import { Plus } from "lucide-react"
 
-import type { Product } from "./data-table"
-
  import {
    toast
  } from "sonner"
