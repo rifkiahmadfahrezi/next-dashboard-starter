@@ -1,78 +1,61 @@
-'use client'
-
-import React, { useCallback } from 'react'
-import {
-   Breadcrumb,
-   BreadcrumbItem,
-   BreadcrumbLink,
+"use client"
+import React from "react";
+import { 
+   Breadcrumb, 
+   BreadcrumbItem, 
+   BreadcrumbLink, 
+   BreadcrumbSeparator, 
    BreadcrumbList,
-   BreadcrumbPage,
-   BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"   
-import { cn } from '@/lib/utils'
-import { usePathname } from 'next/navigation'
+   BreadcrumbPage
+} from "../ui/breadcrumb";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
 
-type BreadCrumbLink = {
-   link: `/${string}`;
-   label: string;
-   active: boolean;
-}
-
-const isMenuActive = (
-   current : string, 
-   link : string
-) : boolean => {
-   return current !== '/dashboard' && link === '/dashboard'
-      ? false
-      : current.startsWith(link)
-}
-
-export const DynamicBreadcrumb = ({
-   className,
-   ...props
-}: {
-   className ?: string
+export const DynamicBreadcrumb = ({ 
+   className, 
+   ...props 
+} : {
+   className ?: string;
 }) => {
-   const pathname = usePathname()
-
-   const getLinks  = useCallback(() : BreadCrumbLink[] => {
-      return pathname.split('/').slice(1).map((item) => {
-         return {
-            link: `/${item}`,
-            label: item,
-            active: isMenuActive(pathname, `/${item}`)
-         }
-      })
-   }, [pathname])
+  const pathname = usePathname();
+  const pathItems = pathname.split("/").filter(path => !Number(path) && path);
+  
+  const buildPath = (index : number) => {
+    return "/" + pathItems.slice(0, index + 1).join("/");
+  };
 
   return (
-   <Breadcrumb className={cn(className)} {...props}>
+    <Breadcrumb className={cn(className)} {...props}>
       <BreadcrumbList>
-      {getLinks().map(item => {
-         return (
-            <>
-               <React.Fragment key={item.link}>
-                  {item.active 
-                     ? 
-                     (
-                        <BreadcrumbItem>
-                           <BreadcrumbPage className="capitalize" >{item.label}</BreadcrumbPage>
-                        </BreadcrumbItem>
-                     )
-                     : (
-                        <>
-                        <BreadcrumbSeparator />
-                        <BreadcrumbItem>
-                           <BreadcrumbLink className="capitalize" href={item.link}>{item.label}</BreadcrumbLink>
-                        </BreadcrumbItem>
-                        </>
-                     )
-                  }
-               </React.Fragment>
-            </>
-         )
-      })}
+        <BreadcrumbItem>
+          <BreadcrumbLink href="/">Home</BreadcrumbLink>
+        </BreadcrumbItem>
+        {pathItems.map((item, i) => {
+          const fullPath = buildPath(i);
+          const isLast = i === pathItems.length - 1;
+          return (
+            <React.Fragment key={i}>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+               {!isLast 
+                  ?(
+                  <BreadcrumbLink
+                     href={fullPath}
+                     className={cn(`font-normal capitalize ${isLast && "font-bold"}`)}
+                  >
+                     {item}
+                  </BreadcrumbLink>
+                  )
+                  : <BreadcrumbPage className="capitalize">
+                    {item.replaceAll('-', ' ')}
+                  </BreadcrumbPage>
+
+               }
+              </BreadcrumbItem>
+            </React.Fragment>
+          );
+        })}
       </BreadcrumbList>
-   </Breadcrumb>
-  )
-}
+    </Breadcrumb>
+  );
+};
