@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react'
+import React, { lazy, useState } from 'react'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import {   
    flexRender,
@@ -24,17 +24,14 @@ import {
    TableRow,
  } from "@/components/ui/table"
 
-import { MoreVerticalIcon, Trash2Icon, CopyIcon, ArrowUpDownIcon, Search } from 'lucide-react'
+import { ArrowUpDownIcon, Search } from 'lucide-react'
 import { Button } from "@/components/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
 import { TableSkeleton } from '@/components/skeletons/table-skeleton'
+
+const DeleteDialog = lazy(() => import('./delete-dialog'))
+const UpdateModal = lazy(() => import('./update-modal'))
+const AddModal = lazy(() => import('./add-dialog'))
+
 
 export const getProducts = async (
    limit: number = 10,
@@ -42,7 +39,7 @@ export const getProducts = async (
    search: string = ''
  ): Promise<ProductsResponse> => {
    const response = await fetch(
-    `https://dummyjson.com/products/search?q=${search}&limit=${limit}&skip=${skip}&select=id,title,price`
+    `https://dummyjson.com/products/search?q=${search}&limit=${limit}&skip=${skip}&select=id,title,price,stock`
    );
    return await response.json() as ProductsResponse;
  };
@@ -51,8 +48,8 @@ export const getProducts = async (
 export type Product = {
    id: string
    title: string
-   thumbnail: string
    price: number
+   stock: number
 }
 
 export type ProductsResponse = {
@@ -93,6 +90,20 @@ const columns : ColumnDef<Product>[] = [
               onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
             >
               Title
+              <ArrowUpDownIcon className="h-4 w-4 ml-2" />
+            </Button>
+          )
+      },
+   },
+   {
+      accessorKey: 'stock',
+      header: ({ column }) => {
+         return (
+            <Button
+              variant="ghost"
+              onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+            >
+              Stock
               <ArrowUpDownIcon className="h-4 w-4 ml-2" />
             </Button>
           )
@@ -143,29 +154,12 @@ const columns : ColumnDef<Product>[] = [
          }
 
          return (
-            <DropdownMenu>
-               <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="h-8 w-8 p-0">
-                  <span className="sr-only">Open menu</span>
-                  <MoreVerticalIcon className="h-4 w-4" />
-                  </Button>
-               </DropdownMenuTrigger>
-               <DropdownMenuContent align="end">
-                  <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                  <DropdownMenuItem
-                     onClick={() => navigator.clipboard.writeText(product.id)}
-                  >
-                     <CopyIcon className="mr-2 h-4 w-4" />
-                     Copy ID
-                  </DropdownMenuItem>
-                  <DropdownMenuItem onClick={() => handleDelete(product.id)}>
-                     <Trash2Icon className="mr-2 h-4 w-4" />
-                     Delete
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem>View product details</DropdownMenuItem>
-               </DropdownMenuContent>
-            </DropdownMenu>
+          <>
+            <div className="flex flex-wrap gap-1 items-center">
+              <DeleteDialog deleteFn={() => handleDelete(product.id)} />
+              <UpdateModal product={product} />
+            </div>
+          </>
          )
       }
    }
@@ -217,6 +211,7 @@ function DataTable() {
           <h1 className="text-2xl font-bold">Product list</h1>
         </div>
 
+      <div className="flex flex-wrap gap-2 items-center">
         <div className="space-y-2">
           <div className="relative">
             <Input 
@@ -224,13 +219,15 @@ function DataTable() {
               value={globalFilter}
               onChange={(event) => setGlobalFilter(event.target.value)}
               id="input-26" 
-              className="peer pe-9 ps-9" 
+              className="peer ps-9" 
               type="search" />
             <div className="pointer-events-none absolute inset-y-0 start-0 flex items-center justify-center ps-3 text-muted-foreground/80 peer-disabled:opacity-50">
               <Search size={16} strokeWidth={2} />
             </div>
           </div>
         </div>
+        <AddModal />
+      </div>
 
       </div>
       {debouncedGlobalFilter && (
