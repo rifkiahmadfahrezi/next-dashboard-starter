@@ -1,0 +1,32 @@
+import React from 'react'
+import { BackButton } from '@/components/back-button'
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
+import { Construction } from 'lucide-react'
+
+const NotFoundPage = () => {
+  return (
+   <div className="grid min-h-svh place-items-center">
+      <div className="flex flex-col items-center text-center">
+         <Construction className='size-28' />
+         <h1 className='text-3xl mt-4 font-semibold'>Under Maintenance</h1>
+         <p className='max-w-md text-muted-foreground'>Our website is currently down for maintenance. We're working hard to improve your experience and will be back shortly.</p>
+
+         <div className="flex items-center gap-2 mt-6 mx-auto">
+            <BackButton />
+            <Button
+               asChild
+               >
+               <Link
+                  href={'/'}
+                  >
+                  Back to home
+               </Link>
+            </Button>
+         </div>
+      </div>
+   </div>
+  )
+}
+
+export default NotFoundPage
