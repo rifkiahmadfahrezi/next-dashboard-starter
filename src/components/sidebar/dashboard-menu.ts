@@ -59,12 +59,12 @@ export const dashboardMenu : DashboardMenu[] = [
             subItems: [
                {
                   label: "Not found (404)",
-                  link: "/404",
+                  link: "/not-found",
                   newTab: true
                },
                {
                   label: "Server error (500)",
-                  link: "/500",
+                  link: "/server-error",
                   newTab: true
                },
                {
