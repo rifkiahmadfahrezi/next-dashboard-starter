@@ -9,7 +9,7 @@ const NotFoundPage = () => {
       <div className="flex flex-col items-center text-center">
          <span className='text-9xl font-bold'>404</span>
          <h1 className='text-3xl mt-4 font-semibold'>Page not found</h1>
-         <p className='max-w-sm text-muted-foreground'>Oops! The page you're looking for doesn't exist. It might have been moved or deleted.</p>
+         <p className='max-w-sm text-muted-foreground'>Oops! The page you&lsquo;re looking for doesn&lsquo;t exist. It might have been moved or deleted.</p>
 
          <div className="flex items-center gap-2 mt-6 mx-auto">
             <BackButton />

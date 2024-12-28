@@ -10,7 +10,7 @@ const NotFoundPage = () => {
       <div className="flex flex-col items-center text-center">
          <Construction className='size-28' />
          <h1 className='text-3xl mt-4 font-semibold'>Under Maintenance</h1>
-         <p className='max-w-md text-muted-foreground'>Our website is currently down for maintenance. We're working hard to improve your experience and will be back shortly.</p>
+         <p className='max-w-md text-muted-foreground'>Our website is currently down for maintenance. We&lsquo;re working hard to improve your experience and will be back shortly.</p>
 
          <div className="flex items-center gap-2 mt-6 mx-auto">
             <BackButton />
