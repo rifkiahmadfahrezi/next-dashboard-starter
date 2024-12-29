@@ -4,6 +4,7 @@ import React from 'react'
 import ReactQueryProvider from './react-query-provider'
 import { ThemeProvider } from './theme-provider'
 import { Toaster } from '../ui/sonner'
+import ProgressProvider from './progress-provider'
 
 const Providers = ({
    children
@@ -19,7 +20,9 @@ const Providers = ({
          enableSystem
          disableTransitionOnChange
          >
+      <ProgressProvider>
       {children}
+      </ProgressProvider>
       <Toaster />
       </ThemeProvider>
       </ReactQueryProvider>
