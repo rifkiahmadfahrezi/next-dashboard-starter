@@ -1,112 +1,63 @@
-"use client"
-
-import * as React from "react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { Menu } from 'lucide-react'
-
-import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Separator } from "@/components/ui/separator"
+"use client";
+import Link from "next/link";
+import { Button } from "../ui/button";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/utils";
+import { routes, activeLink } from "./navbar-menu";
+import NavbarMobile from "./navbar-mobile";
 
 
-const routes = [
-  {
-    href: "/",
-    label: "Home",
-  },
-  {
-    href: "/about",
-    label: "About",
-  },
-  {
-    href: "/services",
-    label: "Services",
-  },
-  {
-    href: "/contact",
-    label: "Contact",
-  },
-]
-
-export function Navbar() {
-  const [isOpen, setIsOpen] = React.useState(false)
-  const pathname = usePathname()
+export const Navbar = () => {
+  const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 items-center mx-auto px-3">
-        <div className="mr-4 hidden md:flex">
-          <Button
-            asChild
-            variant={'ghost'}
-            >
-            <Link href="/" className="mr-6 flex items-center space-x-2">
-              <span className="hidden font-bold sm:inline-block">Logo</span>
+    <nav className="bg-background w-full sticky top-0 z-50">
+      <div className="max-w-screen-2xl mx-auto px-5">
+        <div className="flex justify-between items-center py-5">
+          <Button 
+            variant='ghost'
+            asChild >
+            <Link 
+              href={"/"}>
+            Logo
             </Link>
           </Button>
-          <nav className="flex items-center space-x-6 text-sm font-medium">
-            {routes.map((route) => (
-              <Link
-                key={route.href}
-                href={route.href}
-                className={`transition-colors hover:text-foreground/80 ${
-                  pathname === route.href ? "text-foreground" : "text-foreground/60"
-                }`}
-              >
-                {route.label}
-              </Link>
+
+          <ul className="hidden md:flex items-center gap-4">
+            {routes.map((item) => (
+              <li key={item.link}>
+                <Button
+                  variant={activeLink(item.link, pathname) ? 'secondary' : 'ghost'}
+                  asChild
+                  >
+                  <Link
+                    href={item.link}
+                  >
+                    {item.label}
+                  </Link>
+                </Button>
+              </li>
             ))}
-          </nav>
-        </div>
-        <Sheet open={isOpen} onOpenChange={setIsOpen}>
-          <SheetTrigger asChild>
-            <Button
-              variant="ghost"
-              className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
-            >
-              <Menu className="h-5 w-5" />
-              <span className="sr-only">Toggle Menu</span>
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="left" className="pr-0">
-            <Link
-              href="/"
-              className="flex items-center"
-              onClick={() => setIsOpen(false)}
-            >
-              <span className="font-bold">ACME Inc</span>
-            </Link>
-            <Separator className="my-5"/>
-            <nav className="flex flex-col space-y-4">
-              {routes.map((route) => (
-                <Link
-                  key={route.href}
-                  href={route.href}
-                  onClick={() => setIsOpen(false)}
-                  className={`text-sm transition-colors hover:text-foreground/80 ${
-                    pathname === route.href ? "text-foreground" : "text-foreground/60"
-                  }`}
-                >
-                  {route.label}
-                </Link>
-              ))}
-            </nav>
-          </SheetContent>
-        </Sheet>
-        <div className="flex flex-1 items-center space-x-2 justify-end">
-          <div className="flex items-center gap-2">
-            <Button
-              asChild
-              >
-            <Link href="/login" className="mr-6 flex items-center space-x-2">
-              <span className="hidden font-bold sm:inline-block">Sign In</span>
-            </Link>
-          </Button>
-          </div>
+             <li 
+               className="w-full">
+               <Button
+                  asChild
+                  >
+                  <Link
+                  className="w-full"
+                  href={'/login'}
+                  >
+                  Login
+                  </Link>
+             </Button>
+           </li>
+          </ul>
+          
+
+          {/* mobile */}
+          <NavbarMobile />
         </div>
       </div>
-    </header>
-  )
-}
-
+    </nav>
+  );
+};
