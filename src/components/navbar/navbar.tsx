@@ -22,7 +22,7 @@ export const Navbar = () => {
             </Link>
           </Button>
 
-          <ul className="hidden md:flex items-center gap-4">
+          <ul className="hidden md:flex items-center gap-2">
             {routes.map((item) => (
               <li key={item.link}>
                 <Button
