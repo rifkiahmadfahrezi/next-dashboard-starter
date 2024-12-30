@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /dashboard
+Disallow: /dashboard/
+
+Allow: /
+   
+Sitemap: https://next-dashboard-starter-template.vercel.app/sitemap.xml

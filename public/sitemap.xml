@@ -1,0 +1,42 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+   <loc>https://next-dashboard-starter-template.vercel.app/</loc>
+   <lastmod>2024-12-30T13:54:58+01:00</lastmod>
+   <priority>0.1</priority>
+</url>
+<url>
+   <loc>https://next-dashboard-starter-template.vercel.app/dashboard</loc>
+   <lastmod>2024-12-30T13:54:58+01:00</lastmod>
+   <priority>0.1</priority>
+</url>
+<url>
+   <loc>https://next-dashboard-starter-template.vercel.app/login</loc>
+   <lastmod>2024-12-30T13:54:58+01:00</lastmod>
+   <priority>0.1</priority>
+</url>
+<url>
+   <loc>https://next-dashboard-starter-template.vercel.app/not-found</loc>
+   <lastmod>2024-12-30T13:55:02+01:00</lastmod>
+   <priority>0.1</priority>
+</url>
+<url>
+   <loc>https://next-dashboard-starter-template.vercel.app/server-error</loc>
+   <lastmod>2024-12-30T13:55:02+01:00</lastmod>
+   <priority>0.1</priority>
+</url>
+<url>
+   <loc>https://next-dashboard-starter-template.vercel.app/not-allowed</loc>
+   <lastmod>2024-12-30T13:55:02+01:00</lastmod>
+   <priority>0.1</priority>
+</url>
+<url>
+   <loc>https://next-dashboard-starter-template.vercel.app/maintenance</loc>
+   <lastmod>2024-12-30T13:55:02+01:00</lastmod>
+   <priority>0.1</priority>
+</url>
+<url>
+   <loc>https://next-dashboard-starter-template.vercel.app/register</loc>
+   <lastmod>2024-12-30T13:55:02+01:00</lastmod>
+   <priority>0.1</priority>
+</url>
+</urlset>
