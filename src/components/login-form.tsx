@@ -93,6 +93,7 @@ export function LoginForm({
               src="https://images.unsplash.com/photo-1637775297509-19767f6fc225"
               alt="Image"
               fill
+              priority
               className="absolute inset-0 h-full w-full object-cover invert dark:invert-0"
             />
           </div>
