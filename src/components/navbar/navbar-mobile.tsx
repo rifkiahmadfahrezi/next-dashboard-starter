@@ -22,7 +22,8 @@ export default function NavbarMobile({
    <Sheet>
       <SheetTrigger asChild>
          <Button variant="ghost" className="ml-3">
-         <MenuIcon />
+            <MenuIcon />
+            <span className="sr-only">Toggle menu</span>
          </Button>
       </SheetTrigger>
       <SheetContent>
