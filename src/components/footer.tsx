@@ -73,7 +73,7 @@ export default function Footer() {
         </div>
       </div>
       <Separator className="container mt-8 mb-4 mx-auto px-4" />
-      <div className="flex items-center justify-between container mx-auto px-3">
+      <div className="flex items-center justify-between container mx-auto px-3 flex-wrap gap-10">
          <small className="text-muted-foreground" >© {new Date().getFullYear()} Company. All rights reserved.</small>
          <ThemeSwitcher />
       </div>
