@@ -10,10 +10,11 @@ type ButtonMagneticProps = React.ComponentProps<"button">;
 
 export default function ButtonMagnetic({ className, children }: ButtonMagneticProps) {
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const ref = useRef<any>(null);
+  const ref = useRef<HTMLButtonElement | null>(null);
 
   function handleMouseMove(e: React.MouseEvent) {
     const { clientX, clientY } = e;
+    if (!ref.current) return;
     const { height, width, left, top } = ref.current.getBoundingClientRect();
 
     const middleX = clientX - (left + width / 2);
