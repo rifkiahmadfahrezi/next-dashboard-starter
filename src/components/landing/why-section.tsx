@@ -36,7 +36,7 @@ export default function WhySection() {
          className="grid grid-cols-1 md:grid-cols-3 max-w-screen-xl mx-auto gap-3">
          {data.map(item => (
             <Card 
-               className='flex-grow'
+               className='flex-grow md:hover:-translate-y-3 transition duration-200 ease-in-out'
                key={item.title}>
                <CardHeader>
                   <div className="size-10 mb-3 rounded-full grid place-items-center bg-primary/10">

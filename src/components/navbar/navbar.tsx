@@ -10,9 +10,9 @@ export const Navbar = () => {
   const pathname = usePathname();
 
   return (
-    <nav className="bg-background w-full sticky top-0 z-50">
-      <div className="max-w-screen-2xl mx-auto px-5">
-        <div className="flex justify-between items-center py-5">
+    <nav className="bg-background w-full sticky top-0 z-50 border-b">
+      <div className="max-w-screen-2xl mx-auto px-3">
+        <div className="flex justify-between items-center py-2">
           <Button 
             variant='ghost'
             asChild >

@@ -26,7 +26,7 @@ export default function Hero() {
             </MagneticButton>
             <Button
                asChild
-               variant={'ghost'}
+               variant={'outline'}
                >
                <Link
                   className='group'
