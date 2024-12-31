@@ -1,15 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import Providers from "@/components/providers";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  weight: ['400'],
   subsets: ["latin"],
 });
 
@@ -18,7 +13,13 @@ export const metadata: Metadata = {
     template: "%s | Next shadcn dashboard starter",
     default: "Next shadcn dashboard starter"
   },
-  description: "Starter for next js shadcn dashboard",
+  description: "Dashboard starter for next js and shadcn",
+  keywords: [
+    'dashboard template',
+    'shadcn dashboard',
+    'nextjs dashboard',
+    'free react dashboard'
+  ]
 };
 
 export default function RootLayout({
@@ -29,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${inter.className} antialiased`}
       >
         <Providers>
           {children}
