@@ -22,8 +22,8 @@ export const dashboardMenu : DashboardMenu[] = [
       title: 'Menus',
       items: [
          {
-            link: '/dashboard',
-            label: 'Dashboard',
+            link: '/dashboard/overview',
+            label: 'Overview',
             icon: 'layout-dashboard',
             newTab: false,
             isLink: true,
