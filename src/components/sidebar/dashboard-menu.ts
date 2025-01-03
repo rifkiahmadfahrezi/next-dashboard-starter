@@ -45,6 +45,14 @@ export const dashboardMenu : DashboardMenu[] = [
             isLink: true,
             subItems: null
          },
+         {
+            link: '/dashboard/settings',
+            label: 'Settings',
+            icon: 'settings',
+            newTab: false,
+            isLink: true,
+            subItems: null
+         },
       ]
    },
    {

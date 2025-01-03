@@ -7,13 +7,11 @@ import {
 import {
   Sidebar,
   SidebarContent,
-  SidebarFooter,
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar"
 import { SidebarMenus } from "./sidebar-menu"
 import { dashboardMenu } from "@/components/sidebar/dashboard-menu"
-import { ThemeSwitcher } from "../theme-switcher"
 import Link from "next/link"
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
@@ -40,9 +38,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarContent>
         <SidebarMenus dashboardMenu={dashboardMenu} />
       </SidebarContent>
-      <SidebarFooter>
-        <ThemeSwitcher className="w-fit" />
-      </SidebarFooter>
       <SidebarRail />
     </Sidebar>
   )
