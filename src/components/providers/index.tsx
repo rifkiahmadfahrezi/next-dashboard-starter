@@ -5,6 +5,7 @@ import ReactQueryProvider from './react-query-provider'
 import { ThemeProvider } from './theme-provider'
 import { Toaster } from '../ui/sonner'
 import ProgressProvider from './progress-provider'
+import { NuqsAdapter } from 'nuqs/adapters/next/app'
 
 const Providers = ({
    children
@@ -21,7 +22,9 @@ const Providers = ({
          disableTransitionOnChange
          >
       <ProgressProvider>
-      {children}
+      <NuqsAdapter>
+         {children}
+      </NuqsAdapter>
       </ProgressProvider>
       <Toaster />
       </ThemeProvider>
