@@ -32,7 +32,7 @@ export default function Hero() {
                   className='group'
                   href={'/dashboard'}
                   >
-                  Demo <MoveRight className='group-hover:translate-x-1 transition duration-150 ease-linear' />
+                  View dashboard <MoveRight className='group-hover:translate-x-1 transition duration-150 ease-linear' />
                </Link>
             </Button>
          </div>
