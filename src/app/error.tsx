@@ -26,7 +26,7 @@ const NotFoundPage = (
 
          <div className="flex items-center gap-2 mt-6 mx-auto">
             <Button 
-               // onClick={reset}
+               onClick={reset}
                >
                Retry
             </Button>
