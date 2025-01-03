@@ -18,7 +18,7 @@ const Layout = ({
       // repeatDelay={1}
       className={cn(
          "[mask-image:radial-gradient(500px_circle_at_center,white,transparent)]",
-         "inset-x-0 inset-y-[-50%] h-[200%]",
+         "inset-x-0 inset-y-[-100%] h-[200%]",
       )}/>
    <Navbar />
    <main className="min-h-svh relative">
