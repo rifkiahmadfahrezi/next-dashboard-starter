@@ -4,10 +4,6 @@ export const routes = [
       label: 'Home',
    },
    {
-      link: '/about',
-      label: 'About',
-   },
-   {
       link: '/dashboard',
       label: 'Dashboard',
    },
