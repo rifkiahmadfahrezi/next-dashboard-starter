@@ -1,45 +1,52 @@
-"use client";
+'use client'
 
-import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
-import { Eye, EyeOff } from "lucide-react";
-import { forwardRef, useState } from "react";
+import * as React from 'react'
+import { EyeIcon, EyeOffIcon } from 'lucide-react'
 
-export const  InputPassword = forwardRef<HTMLInputElement, React.ComponentProps<"input">>(
-  ({ className, placeholder, ...props }, ref) => {
-  const [isVisible, setIsVisible] = useState<boolean>(false);
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { cn } from '@/lib/utils'
 
-  const toggleVisibility = () => setIsVisible((prevState) => !prevState);
+const InputPassword = React.forwardRef<HTMLInputElement, React.HTMLProps<HTMLInputElement>>(({ className, ...props }, ref) => {
+	const [showPassword, setShowPassword] = React.useState(false)
+	const disabled = props.value === '' || props.value === undefined || props.disabled
 
-  return (
-    <div className={cn("space-y-2", className)}>
-      <div className="relative">
-        <Input
-          id="input-23"
-          className="pe-9"
-          {...props}
-          ref={ref}
-          placeholder={placeholder || "Password"}
-          type={isVisible ? "text" : "password"}
-        />
-        <button
-          className="absolute inset-y-0 end-0 flex h-full w-9 items-center justify-center rounded-e-lg text-muted-foreground/80 outline-offset-2 transition-colors hover:text-foreground focus:z-10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring/70 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50"
-          type="button"
-          onClick={toggleVisibility}
-          aria-label={isVisible ? "Hide password" : "Show password"}
-          aria-pressed={isVisible}
-          aria-controls="password"
-        >
-          {isVisible ? (
-            <EyeOff size={16} strokeWidth={2} aria-hidden="true" />
-          ) : (
-            <Eye size={16} strokeWidth={2} aria-hidden="true" />
-          )}
-        </button>
-      </div>
-    </div>
-  );
+	return (
+		<div className="relative">
+			<Input
+				type={showPassword ? 'text' : 'password'}
+				className={cn('hide-password-toggle pr-10', className)}
+				ref={ref}
+				{...props}
+			/>
+			<Button
+				type="button"
+				variant="ghost"
+				size="sm"
+				className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
+				onClick={() => setShowPassword((prev) => !prev)}
+				disabled={disabled}
+			>
+				{showPassword && !disabled ? (
+					<EyeIcon className="h-4 w-4" aria-hidden="true" />
+				) : (
+					<EyeOffIcon className="h-4 w-4" aria-hidden="true" />
+				)}
+				<span className="sr-only">{showPassword ? 'Hide password' : 'Show password'}</span>
+			</Button>
+
+			{/* hides browsers password toggles */}
+			<style>{`
+					.hide-password-toggle::-ms-reveal,
+					.hide-password-toggle::-ms-clear {
+						visibility: hidden;
+						pointer-events: none;
+						display: none;
+					}
+				`}</style>
+		</div>
+	)
 })
-
-
 InputPassword.displayName = 'InputPassword'
+
+export { InputPassword }
