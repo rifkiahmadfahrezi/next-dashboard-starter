@@ -27,12 +27,12 @@ export default function OverviewCards() {
    <div className="flex flex-wrap gap-3">
       {data.map(item => (
          <Card 
-            className='flex-grow'
+            className='flex-grow border-secondary'
             key={item.title}>
             <CardHeader>
-               <div className="size-14 grid place-items-center bg-primary/10 rounded-full">
+               <div className="size-8 grid place-items-center bg-primary/10 rounded-full">
                   <Icons 
-                     className='size-8'
+                     className='size-5'
                      iconName={item.icon} />
                </div>
                <div className="pt-1">
