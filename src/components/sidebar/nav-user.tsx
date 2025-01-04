@@ -72,7 +72,7 @@ export function NavUser({
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <Link href={'/profile'}>
+              <Link href={'/dashboard/settings?tab=profile'}>
                 <DropdownMenuItem>
                   <User2Icon />
                   Profile

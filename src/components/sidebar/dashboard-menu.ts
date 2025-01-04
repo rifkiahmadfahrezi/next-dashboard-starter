@@ -109,6 +109,11 @@ export const dashboardMenu : DashboardMenu[] = [
                   link: "/forgot-password",
                   newTab: true
                },
+               {
+                  label: "OTP",
+                  link: "/otp",
+                  newTab: true
+               },
             ]
          },
       ]

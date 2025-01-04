@@ -81,10 +81,13 @@ const Menu = memo(({
       <>
       <SidebarMenuItem className={cn(className)} {...props}>
          <SidebarMenuButton 
+            tooltip={menuItem.label}
             isActive={activeLink(menuItem.link, pathname)}
+            className="p-5"
             asChild>
             <Link 
-               className="w-full"
+               className="w-full group"
+               target={menuItem.newTab ? "_blank" : "_self"}
                href={menuItem.link}>
                <Icons iconName={menuItem.icon} />
                <span className="capitalize">{menuItem.label}</span>
@@ -124,6 +127,7 @@ Menu.displayName = "Menu"
          <SidebarMenuItem>
          <CollapsibleTrigger asChild>
             <SidebarMenuButton 
+               className="p-5"
                isActive={activeLink(menuItem.link, pathname)}
                tooltip={menuItem.label}>
                {menuItem.icon && <Icons iconName={menuItem.icon} />}
@@ -135,8 +139,11 @@ Menu.displayName = "Menu"
             <SidebarMenuSub>
                {menuItem.subItems?.map((subItem) => (
                <SidebarMenuSubItem key={subItem.label}>
-                  <SidebarMenuSubButton asChild>
+                  <SidebarMenuSubButton 
+                     className="p-5"
+                     asChild>
                      <Link 
+                        target={subItem.newTab ? "_blank" : "_self"}
                         href={subItem.link}>
                         <span>{subItem.label}</span>
                      </Link>
