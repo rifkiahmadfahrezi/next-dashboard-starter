@@ -29,30 +29,6 @@ export const dashboardMenu : DashboardMenu[] = [
             isLink: true,
             subItems: null
          },
-         {
-            link: '/dashboard/data-table',
-            label: 'Data table',
-            icon: 'table',
-            newTab: false,
-            isLink: true,
-            subItems: null
-         },
-         {
-            link: '/dashboard/rich-text-editor',
-            label: 'Rich text editor',
-            icon: 'notebook-pen',
-            newTab: false,
-            isLink: true,
-            subItems: null
-         },
-         {
-            link: '/dashboard/settings',
-            label: 'Settings',
-            icon: 'settings',
-            newTab: false,
-            isLink: true,
-            subItems: null
-         },
       ]
    },
    {

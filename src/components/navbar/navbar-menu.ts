@@ -7,10 +7,6 @@ export const routes = [
       link: '/dashboard',
       label: 'Dashboard',
    },
-   {
-      link: '/contact',
-      label: 'Contact',
-   },
 ]
 
 export const activeLink = (link : string, pathname : string) : boolean => {
