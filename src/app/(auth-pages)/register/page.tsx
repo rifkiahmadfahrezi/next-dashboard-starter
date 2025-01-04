@@ -1,4 +1,4 @@
-import { RegisterForm } from "@/components/register-form"
+import { RegisterForm } from "@/components/forms/register-form"
 import Image from "next/image"
 
 import type { Metadata } from "next"

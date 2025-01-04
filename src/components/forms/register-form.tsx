@@ -15,13 +15,13 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form"
-import { InputPassword } from './ui/input-password'
+import { InputPassword } from '../ui/input-password'
 import { 
   GitHubLogoIcon,
   DiscordLogoIcon,
   LinkedInLogoIcon
 } from '@radix-ui/react-icons'
-import { Separator } from './ui/separator'
+import { Separator } from '../ui/separator'
 
 
 const formSchema = z.object({
