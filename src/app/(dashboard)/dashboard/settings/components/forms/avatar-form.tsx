@@ -3,6 +3,7 @@
 import React, { useCallback, useState } from 'react'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
+import { Camera } from 'lucide-react'
 
 const defaultAvatar = 'https://github.com/rifkiahmadfahrezi.png'
 const AvatarForm = () => {
@@ -16,7 +17,7 @@ const AvatarForm = () => {
 
   return (
    <>
-   <form className='flex flex-col justify-center gap-3'>
+   <form className='flex flex-col justify-center gap-3 w-fit'>
       <label htmlFor="avatar">
          <figure
             className='rounded-full overflow-hidden aspect-square size-20 group relative cursor-pointer'
@@ -28,7 +29,10 @@ const AvatarForm = () => {
             alt='avatar'
             src={avatar}
             />
-            <span className='absolute h-full w-full grid place-items-center bottom-0 bg-secondary/75 text-center text-sm translate-y-[100%] group-hover:translate-y-0 transition duration-200 eas'>Change avatar</span>
+            <span className='absolute h-full w-full grid place-items-center bottom-0 bg-secondary/75 text-center text-sm opacity-0 group-hover:opacity-100 transition duration-200 ease-in-out'>
+               <Camera />
+               <span className="sr-only">Change avatar</span>
+            </span>
          </figure>
          <input 
             onChange={handleChangeImage}
