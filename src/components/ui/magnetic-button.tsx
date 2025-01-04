@@ -33,7 +33,7 @@ export default function ButtonMagnetic({ className, children }: ButtonMagneticPr
     <motion.button
       ref={ref}
       className={cn(
-        "relative bg-foreground rounded-md px-4 py-2 text-sm text-background",
+        "relative bg-primary rounded-md px-4 py-2 text-sm text-primary-foreground",
         className,
       )}
       onMouseMove={handleMouseMove}
